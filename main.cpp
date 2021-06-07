@@ -5,39 +5,28 @@ using namespace std;
 
 int main()
 {
-    int n, k;
-    cin >> n >> k;
-    vector<int> v;
-    for (int i = 0; i < n; i++)
+    int t;
+    cin >> t;
+    for (int i = 0; i < t; i++)
     {
-        int temp;
-        cin >> temp;
-        v.push_back(temp);
-    }
-    sort(v.begin(), v.end());
-    if (k != 0)
-    {
-        int num = v[k - 1];
-        int count = 0;
+        int n;
+        cin >> n;
+        vector<int> v;
         for (int i = 0; i < n; i++)
         {
-            if (num >= v[i])
-            {
-                count++;
-            }
+            int temp;
+            cin >> temp;
+            v.push_back(temp);
         }
-        //cout << count;
-        if (count == k)
+        int pos = n - 1;
+        while (pos > 0 && v[pos - 1] >= v[pos])
         {
-            cout << num;
+            pos--;
         }
-        else
+        while (pos > 0 && v[pos - 1] <= v[pos])
         {
-            cout << -1;
+            pos--;
         }
-    }
-    else
-    {
-        cout << 1;
+        cout <<  pos << endl;
     }
 }
